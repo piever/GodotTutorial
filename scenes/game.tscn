@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://assets/Backgrounds/Space_bkgr.png" type="Texture" id=1]
+[ext_resource path="res://assets/PNG/playerShip3_blue.png" type="Texture" id=2]
+[ext_resource path="res://scripts/player.gd" type="Script" id=3]
+
+[node name="game" type="Node2D"]
+
+[node name="background" type="Sprite" parent="."]
+
+transform/pos = Vector2( -833.879, -440.546 )
+transform/scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+centered = false
+region_rect = Rect2( 0, 0, 1280, 720 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="top_left" type="Position2D" parent="background"]
+
+transform/pos = Vector2( 354.778, 214.374 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="bottom_right" type="Position2D" parent="background"]
+
+transform/pos = Vector2( 2492.35, 587.403 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="player" type="Sprite" parent="."]
+
+transform/pos = Vector2( 642.123, 356.284 )
+texture = ExtResource( 2 )
+script/script = ExtResource( 3 )
+
+[node name="camera" type="Camera2D" parent="player"]
+
+transform/pos = Vector2( -1.8504, -8.34839 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+drag_margin/h_enabled = true
+drag_margin/v_enabled = true
+smoothing/enable = false
+smoothing/speed = 5.0
+drag_margin/left = 0.2
+drag_margin/top = 0.2
+drag_margin/right = 0.2
+drag_margin/bottom = 0.2
+
+
