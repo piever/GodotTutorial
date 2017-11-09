@@ -1,8 +1,19 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://assets/Backgrounds/Space_bkgr.png" type="Texture" id=1]
-[ext_resource path="res://assets/PNG/playerShip3_blue.png" type="Texture" id=2]
-[ext_resource path="res://scripts/player.gd" type="Script" id=3]
+[ext_resource path="res://assets/spaceship.png" type="Texture" id=2]
+[ext_resource path="res://assets/spaceship2.png" type="Texture" id=3]
+[ext_resource path="res://scripts/player.gd" type="Script" id=4]
+[ext_resource path="res://scenes/enemy.tscn" type="PackedScene" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="game" type="Node2D"]
 
@@ -31,11 +42,130 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="player" type="Sprite" parent="."]
+[node name="player" type="AnimatedSprite" parent="."]
 
-transform/pos = Vector2( 642.123, 356.284 )
+transform/pos = Vector2( 597.127, 333.683 )
+transform/scale = Vector2( 0.425532, 0.425532 )
 z/z = 1
-texture = ExtResource( 2 )
-script/script = ExtResource( 3 )
+frames = SubResource( 1 )
+animation = "default"
+frame = 1
+playing = true
+script/script = ExtResource( 4 )
+
+[node name="camera" type="Camera2D" parent="player"]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+drag_margin/h_enabled = true
+drag_margin/v_enabled = true
+smoothing/enable = false
+smoothing/speed = 5.0
+drag_margin/left = 0.2
+drag_margin/top = 0.2
+drag_margin/right = 0.2
+drag_margin/bottom = 0.2
+
+[node name="shootfrom" type="Position2D" parent="player"]
+
+transform/pos = Vector2( 197.891, 55.5873 )
+
+[node name="enemy" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -402.594, -155.604 )
+
+[node name="enemy1" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 1626.43, 578.915 )
+
+[node name="enemy2" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 1519.78, 181.307 )
+
+[node name="enemy5" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 85.3208, 343.283 )
+
+[node name="enemy6" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -543.92, 895.868 )
+
+[node name="enemy7" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 3572.81, 794.549 )
+
+[node name="enemy8" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 2767.59, 863.872 )
+
+[node name="enemy9" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 389.276, 917.198 )
+
+[node name="enemy10" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 2063.7, 746.557 )
+
+[node name="enemy11" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 1045.18, 191.972 )
+
+[node name="enemy12" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 394.608, 95.9858 )
+
+[node name="enemy13" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 830.079, 725.514 )
+
+[node name="enemy14" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 3283.39, 344.602 )
+
+[node name="enemy15" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -371.989, 408.411 )
+
+[node name="enemy16" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 244.156, -185.818 )
+
+[node name="enemy17" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 1948.4, -193.212 )
+
+[node name="enemy18" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 2180.93, 219.845 )
+
+[node name="enemy19" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 2622.04, -181.937 )
+
+[node name="enemy20" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 3101.31, -113.452 )
+
+[node name="enemy21" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 4164.6, 355.716 )
+
+[node name="enemy22" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -117.037, 701.668 )
+
+[node name="enemy23" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 1122.7, -244.211 )
+
+[node name="enemy24" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 4254.99, -115.613 )
 
 

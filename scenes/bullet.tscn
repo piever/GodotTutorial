@@ -1,18 +1,35 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=9 format=1]
 
-[ext_resource path="res://assets/PNG/Lasers/laserGreen11.png" type="Texture" id=1]
-[ext_resource path="res://scripts/bullet.gd" type="Script" id=2]
+[ext_resource path="res://assets/bullet1.png" type="Texture" id=1]
+[ext_resource path="res://assets/bullet2.png" type="Texture" id=2]
+[ext_resource path="res://assets/bullet3.png" type="Texture" id=3]
+[ext_resource path="res://assets/bullet4.png" type="Texture" id=4]
+[ext_resource path="res://assets/bullet5.png" type="Texture" id=5]
+[ext_resource path="res://scripts/bullet.gd" type="Script" id=6]
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
 
 custom_solver_bias = 0.0
 radius = 10.0
 height = 20.0
 
-[node name="bullet" type="Sprite"]
+[node name="bullet" type="AnimatedSprite"]
 
-texture = ExtResource( 1 )
-script/script = ExtResource( 2 )
+transform/pos = Vector2( 59.1415, 59.1415 )
+transform/scale = Vector2( 0.260732, 0.260732 )
+frames = SubResource( 1 )
+animation = "default"
+playing = true
+script/script = ExtResource( 6 )
 
 [node name="visible" type="VisibilityNotifier2D" parent="."]
 
@@ -21,7 +38,7 @@ rect = Rect2( -10, -10, 20, 20 )
 [node name="area" type="Area2D" parent="."]
 
 input/pickable = true
-shapes/0/shape = SubResource( 1 )
+shapes/0/shape = SubResource( 2 )
 shapes/0/transform = Matrix32( 0.677626, 0, 0, 1.40671, 0.0927662, -0.733582 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -33,11 +50,9 @@ angular_damp = 1.0
 
 transform/pos = Vector2( 0.0927662, -0.733582 )
 transform/scale = Vector2( 0.677626, 1.40671 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 trigger = false
 _update_shape_index = 0
-
-[connection signal="exit_screen" from="visible" to="." method="_on_visible_exit_screen"]
 
 [connection signal="area_enter" from="area" to="." method="_on_area_area_enter"]
 
